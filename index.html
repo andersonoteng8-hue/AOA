@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Professional Web Developer Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #05070f;
+  --bg-light: #f4f6fb;
+  --text-dark: #ffffff;
+  --text-light: #111111;
+  --primary: #00e5ff;
+  --glass-dark: rgba(255,255,255,0.12);
+  --glass-light: rgba(0,0,0,0.08);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #101b3c, var(--bg-dark));
+  color: var(--text-dark);
+  transition: 0.4s;
+}
+
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* Racing streaks */
+.streak {
+  position: fixed;
+  width: 2px;
+  height: 200px;
+  background: linear-gradient(transparent, var(--primary), transparent);
+  animation: streak 3s linear infinite;
+  opacity: 0.4;
+  z-index: 0;
+}
+@keyframes streak {
+  0% {transform: translateY(-120vh);}
+  100% {transform: translateY(120vh);}
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.4);
+}
+
+body.light header {
+  background: rgba(255,255,255,0.7);
+}
+
+header h1 {
+  color: var(--primary);
+}
+
+header nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  color: var(--primary);
+}
+
+/* Toggle */
+.toggle {
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text {
+  max-width: 550px;
+}
+
+.hero-text h2 {
+  font-size: 48px;
+}
+
+.hero-text span {
+  color: var(--primary);
+}
+
+.hero-text p {
+  margin: 20px 0;
+}
+
+.hero-text button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero-img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #6a00ff);
+  padding: 6px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@keyframes float {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-15px);}
+}
+
+/* Sections */
+section {
+  padding: 70px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 36px;
+  color: var(--primary);
+  margin-bottom: 25px;
+}
+
+/* Glass card */
+.card {
+  background: var(--glass-dark);
+  backdrop-filter: blur(16px);
+  padding: 25px;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+body.light .card {
+  background: var(--glass-light);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Skills */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 20px;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 25px;
+}
+
+.project {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.project img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: 0.6s;
+}
+
+.project-info {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.5s;
+  color: #fff;
+}
+
+.project:hover img {
+  transform: scale(1.15);
+}
+
+.project:hover .project-info {
+  opacity: 1;
+}
+
+.project-info h3 {
+  margin-bottom: 10px;
+}
+
+.project-info a {
+  padding: 8px 20px;
+  border-radius: 20px;
+  background: var(--primary);
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Contact */
+.contact a {
+  display: block;
+  margin-top: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact a:hover {
+  color: var(--primary);
+}
+
+/* WhatsApp */
+.whatsapp {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 0 25px #25D366;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {box-shadow: 0 0 10px #25D366;}
+  50% {box-shadow: 0 0 30px #25D366;}
+  100% {box-shadow: 0 0 10px #25D366;}
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero {flex-direction: column; text-align:center;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="streak" style="left:15%"></div>
+<div class="streak" style="left:45%;animation-delay:1s"></div>
+<div class="streak" style="left:75%;animation-delay:2s"></div>
+
+<header>
+  <h1>AndyWeb Pro</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <span class="toggle" onclick="toggleMode()">🌙</span>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>I Build <span>Modern & Animated</span> Websites</h2>
+    <p>I create fast, responsive, and attractive websites that help businesses grow and attract clients.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire Me</button>
+  </div>
+
+  <div class="hero-img">
+    <img src="image/4.JPG" alt="Developer">
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <div class="card">
+    I am Anderson Oteng Amponsah a professional website developer focused on modern UI, animations, and clean code that converts visitors into customers.
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects">
+    <div class="project">
+      <img src="image/ady1.jpg">
+      <div class="project-info">
+        <h3>Business Website</h3>
+        <a href="#">View</a>
+      </div>
+    </div>
+    <div class="project">
+      <img src="image/andy2.jpg">
+      <div class="project-info">
+        <h3>Portfolio Site</h3>
+        <a href="#">View</a>
+      </div>
+    </div>
+    <div class="project">
+      <img src="image/andy3.jpg">
+      <div class="project-info">
+        <h3>Landing Page</h3>
+        <a href="#">View</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="section-title">Contact Me</h2>
+  <div class="card">
+    <a href="mailto:yourteam8@gmail.com">📧 yourteam8@gmail.com</a>
+    <a href="https://wa.me/233240535166873" target="_blank">💬 WhatsApp: 024-0535166873</a>
+  </div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/233240535166873" target="_blank">💬</a>
+
+<footer>© 2026 • Professional Website Developer</footer>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle("light");
+  localStorage.setItem("mode", document.body.classList.contains("light") ? "light" : "dark");
+}
+
+if(localStorage.getItem("mode") === "light"){
+  document.body.classList.add("light");
+}
+</script>
+
+</body>
+</html>
